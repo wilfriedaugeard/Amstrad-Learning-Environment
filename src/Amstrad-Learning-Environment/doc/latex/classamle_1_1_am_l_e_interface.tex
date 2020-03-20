@@ -1,0 +1,213 @@
+\hypertarget{classamle_1_1_am_l_e_interface}{}\doxysection{amle\+::Am\+L\+E\+Interface Class Reference}
+\label{classamle_1_1_am_l_e_interface}\index{amle::AmLEInterface@{amle::AmLEInterface}}
+
+
+{\ttfamily \#include $<$amle\+\_\+interface.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classamle_1_1_am_l_e_interface_ae2085bae9fa9c51640a13f61d7eddbe3}{Am\+L\+E\+Interface}} ()
+\item 
+\mbox{\hyperlink{classamle_1_1_am_l_e_interface_a85082c9df8ab0f50df344ed4540fd8f6}{$\sim$\+Am\+L\+E\+Interface}} ()
+\item 
+\mbox{\hyperlink{classamle_1_1_am_l_e_interface_a70c4ada113cd1615f71986b0952afd42}{Am\+L\+E\+Interface}} (bool display\+\_\+screen)
+\item 
+std\+::string \mbox{\hyperlink{classamle_1_1_am_l_e_interface_a0d4a0ae056e5df52aca521335e1b2f46}{get\+String}} (const std\+::string \&key)
+\item 
+int \mbox{\hyperlink{classamle_1_1_am_l_e_interface_a5000f159b17cc3170af1920b3fe80f70}{get\+Int}} (const std\+::string \&key)
+\item 
+bool \mbox{\hyperlink{classamle_1_1_am_l_e_interface_ad54dec03952f3667d36a269cf7d8a180}{get\+Bool}} (const std\+::string \&key)
+\item 
+float \mbox{\hyperlink{classamle_1_1_am_l_e_interface_a0598b5413db88b468c7e47022fdd22e9}{get\+Float}} (const std\+::string \&key)
+\item 
+void \mbox{\hyperlink{classamle_1_1_am_l_e_interface_a14573d9bc05f340cd6346a8d06cee1aa}{set\+String}} (const std\+::string \&key, const std\+::string \&value)
+\item 
+void \mbox{\hyperlink{classamle_1_1_am_l_e_interface_a611b612652d40baa667d9a608631d617}{set\+Int}} (const std\+::string \&key, const int value)
+\item 
+void \mbox{\hyperlink{classamle_1_1_am_l_e_interface_a3d0cfa618dae78211c1f3ad55984c452}{set\+Bool}} (const std\+::string \&key, const bool value)
+\item 
+void \mbox{\hyperlink{classamle_1_1_am_l_e_interface_aa278114c802b828c6d29d41fe8dca135}{set\+Float}} (const std\+::string \&key, const float value)
+\item 
+bool \mbox{\hyperlink{classamle_1_1_am_l_e_interface_a2e389133065b1a7a6664481bd73bafb6}{game\+\_\+over}} () const
+\item 
+void \mbox{\hyperlink{classamle_1_1_am_l_e_interface_ac292296bfdb0c7a0b10f87d560c1d1b5}{reset\+\_\+game}} ()
+\item 
+int \mbox{\hyperlink{classamle_1_1_am_l_e_interface_aef4482c30c5b5ce11e4053959f79eef5}{get\+Frame\+Number}} ()
+\item 
+int \mbox{\hyperlink{classamle_1_1_am_l_e_interface_a9a6ecd0c46781dfa736f3c9cced600e3}{lives}} ()
+\item 
+Action\+Vect \mbox{\hyperlink{classamle_1_1_am_l_e_interface_a819ab134ebe9a745caff521a4b8753d1}{get\+Legal\+Action\+Set}} ()
+\item 
+Action\+Vect \mbox{\hyperlink{classamle_1_1_am_l_e_interface_ac1b08227638e787a4d6585e3bfe93733}{get\+Minimal\+Action\+Set}} ()
+\item 
+int \mbox{\hyperlink{classamle_1_1_am_l_e_interface_a6da582e5a9a6566a9ac0c904ffc39b43}{get\+Episode\+Frame\+Number}} () const
+\item 
+void \mbox{\hyperlink{classamle_1_1_am_l_e_interface_a339d940a54784ec7bf9abbd63d61dab6}{save\+State}} ()
+\item 
+void \mbox{\hyperlink{classamle_1_1_am_l_e_interface_a8114ecc7fc3cd5f258c73aa0a6171f73}{load\+State}} ()
+\item 
+void \mbox{\hyperlink{classamle_1_1_am_l_e_interface_a74c59137a6cc9b6873d97f09077f6f96}{save\+Screen\+P\+NG}} (const std\+::string \&filename)
+\item 
+reward\+\_\+t \mbox{\hyperlink{classamle_1_1_am_l_e_interface_afe6ed489f8f015718f5ea9a98f98259f}{act}} (Action action)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{classamle_1_1_am_l_e_interface_a1c6a840895e4d5488baee5940d3aaa13}{max\+\_\+num\+\_\+frames}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This class interfaces A\+LE with external code for controlling agents. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classamle_1_1_am_l_e_interface_ae2085bae9fa9c51640a13f61d7eddbe3}\label{classamle_1_1_am_l_e_interface_ae2085bae9fa9c51640a13f61d7eddbe3}} 
+\index{amle::AmLEInterface@{amle::AmLEInterface}!AmLEInterface@{AmLEInterface}}
+\index{AmLEInterface@{AmLEInterface}!amle::AmLEInterface@{amle::AmLEInterface}}
+\doxysubsubsection{\texorpdfstring{AmLEInterface()}{AmLEInterface()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily amle\+::\+Am\+L\+E\+Interface\+::\+Am\+L\+E\+Interface (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classamle_1_1_am_l_e_interface_a85082c9df8ab0f50df344ed4540fd8f6}\label{classamle_1_1_am_l_e_interface_a85082c9df8ab0f50df344ed4540fd8f6}} 
+\index{amle::AmLEInterface@{amle::AmLEInterface}!````~AmLEInterface@{$\sim$AmLEInterface}}
+\index{````~AmLEInterface@{$\sim$AmLEInterface}!amle::AmLEInterface@{amle::AmLEInterface}}
+\doxysubsubsection{\texorpdfstring{$\sim$AmLEInterface()}{~AmLEInterface()}}
+{\footnotesize\ttfamily amle\+::\+Am\+L\+E\+Interface\+::$\sim$\+Am\+L\+E\+Interface (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classamle_1_1_am_l_e_interface_a70c4ada113cd1615f71986b0952afd42}\label{classamle_1_1_am_l_e_interface_a70c4ada113cd1615f71986b0952afd42}} 
+\index{amle::AmLEInterface@{amle::AmLEInterface}!AmLEInterface@{AmLEInterface}}
+\index{AmLEInterface@{AmLEInterface}!amle::AmLEInterface@{amle::AmLEInterface}}
+\doxysubsubsection{\texorpdfstring{AmLEInterface()}{AmLEInterface()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily amle\+::\+Am\+L\+E\+Interface\+::\+Am\+L\+E\+Interface (\begin{DoxyParamCaption}\item[{bool}]{display\+\_\+screen }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classamle_1_1_am_l_e_interface_afe6ed489f8f015718f5ea9a98f98259f}\label{classamle_1_1_am_l_e_interface_afe6ed489f8f015718f5ea9a98f98259f}} 
+\index{amle::AmLEInterface@{amle::AmLEInterface}!act@{act}}
+\index{act@{act}!amle::AmLEInterface@{amle::AmLEInterface}}
+\doxysubsubsection{\texorpdfstring{act()}{act()}}
+{\footnotesize\ttfamily reward\+\_\+t amle\+::\+Am\+L\+E\+Interface\+::act (\begin{DoxyParamCaption}\item[{Action}]{action }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classamle_1_1_am_l_e_interface_a2e389133065b1a7a6664481bd73bafb6}\label{classamle_1_1_am_l_e_interface_a2e389133065b1a7a6664481bd73bafb6}} 
+\index{amle::AmLEInterface@{amle::AmLEInterface}!game\_over@{game\_over}}
+\index{game\_over@{game\_over}!amle::AmLEInterface@{amle::AmLEInterface}}
+\doxysubsubsection{\texorpdfstring{game\_over()}{game\_over()}}
+{\footnotesize\ttfamily bool amle\+::\+Am\+L\+E\+Interface\+::game\+\_\+over (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classamle_1_1_am_l_e_interface_ad54dec03952f3667d36a269cf7d8a180}\label{classamle_1_1_am_l_e_interface_ad54dec03952f3667d36a269cf7d8a180}} 
+\index{amle::AmLEInterface@{amle::AmLEInterface}!getBool@{getBool}}
+\index{getBool@{getBool}!amle::AmLEInterface@{amle::AmLEInterface}}
+\doxysubsubsection{\texorpdfstring{getBool()}{getBool()}}
+{\footnotesize\ttfamily bool amle\+::\+Am\+L\+E\+Interface\+::get\+Bool (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{key }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classamle_1_1_am_l_e_interface_a6da582e5a9a6566a9ac0c904ffc39b43}\label{classamle_1_1_am_l_e_interface_a6da582e5a9a6566a9ac0c904ffc39b43}} 
+\index{amle::AmLEInterface@{amle::AmLEInterface}!getEpisodeFrameNumber@{getEpisodeFrameNumber}}
+\index{getEpisodeFrameNumber@{getEpisodeFrameNumber}!amle::AmLEInterface@{amle::AmLEInterface}}
+\doxysubsubsection{\texorpdfstring{getEpisodeFrameNumber()}{getEpisodeFrameNumber()}}
+{\footnotesize\ttfamily int amle\+::\+Am\+L\+E\+Interface\+::get\+Episode\+Frame\+Number (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classamle_1_1_am_l_e_interface_a0598b5413db88b468c7e47022fdd22e9}\label{classamle_1_1_am_l_e_interface_a0598b5413db88b468c7e47022fdd22e9}} 
+\index{amle::AmLEInterface@{amle::AmLEInterface}!getFloat@{getFloat}}
+\index{getFloat@{getFloat}!amle::AmLEInterface@{amle::AmLEInterface}}
+\doxysubsubsection{\texorpdfstring{getFloat()}{getFloat()}}
+{\footnotesize\ttfamily float amle\+::\+Am\+L\+E\+Interface\+::get\+Float (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{key }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classamle_1_1_am_l_e_interface_aef4482c30c5b5ce11e4053959f79eef5}\label{classamle_1_1_am_l_e_interface_aef4482c30c5b5ce11e4053959f79eef5}} 
+\index{amle::AmLEInterface@{amle::AmLEInterface}!getFrameNumber@{getFrameNumber}}
+\index{getFrameNumber@{getFrameNumber}!amle::AmLEInterface@{amle::AmLEInterface}}
+\doxysubsubsection{\texorpdfstring{getFrameNumber()}{getFrameNumber()}}
+{\footnotesize\ttfamily int amle\+::\+Am\+L\+E\+Interface\+::get\+Frame\+Number (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classamle_1_1_am_l_e_interface_a5000f159b17cc3170af1920b3fe80f70}\label{classamle_1_1_am_l_e_interface_a5000f159b17cc3170af1920b3fe80f70}} 
+\index{amle::AmLEInterface@{amle::AmLEInterface}!getInt@{getInt}}
+\index{getInt@{getInt}!amle::AmLEInterface@{amle::AmLEInterface}}
+\doxysubsubsection{\texorpdfstring{getInt()}{getInt()}}
+{\footnotesize\ttfamily int amle\+::\+Am\+L\+E\+Interface\+::get\+Int (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{key }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classamle_1_1_am_l_e_interface_a819ab134ebe9a745caff521a4b8753d1}\label{classamle_1_1_am_l_e_interface_a819ab134ebe9a745caff521a4b8753d1}} 
+\index{amle::AmLEInterface@{amle::AmLEInterface}!getLegalActionSet@{getLegalActionSet}}
+\index{getLegalActionSet@{getLegalActionSet}!amle::AmLEInterface@{amle::AmLEInterface}}
+\doxysubsubsection{\texorpdfstring{getLegalActionSet()}{getLegalActionSet()}}
+{\footnotesize\ttfamily Action\+Vect amle\+::\+Am\+L\+E\+Interface\+::get\+Legal\+Action\+Set (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classamle_1_1_am_l_e_interface_ac1b08227638e787a4d6585e3bfe93733}\label{classamle_1_1_am_l_e_interface_ac1b08227638e787a4d6585e3bfe93733}} 
+\index{amle::AmLEInterface@{amle::AmLEInterface}!getMinimalActionSet@{getMinimalActionSet}}
+\index{getMinimalActionSet@{getMinimalActionSet}!amle::AmLEInterface@{amle::AmLEInterface}}
+\doxysubsubsection{\texorpdfstring{getMinimalActionSet()}{getMinimalActionSet()}}
+{\footnotesize\ttfamily Action\+Vect amle\+::\+Am\+L\+E\+Interface\+::get\+Minimal\+Action\+Set (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classamle_1_1_am_l_e_interface_a0d4a0ae056e5df52aca521335e1b2f46}\label{classamle_1_1_am_l_e_interface_a0d4a0ae056e5df52aca521335e1b2f46}} 
+\index{amle::AmLEInterface@{amle::AmLEInterface}!getString@{getString}}
+\index{getString@{getString}!amle::AmLEInterface@{amle::AmLEInterface}}
+\doxysubsubsection{\texorpdfstring{getString()}{getString()}}
+{\footnotesize\ttfamily std\+::string amle\+::\+Am\+L\+E\+Interface\+::get\+String (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{key }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classamle_1_1_am_l_e_interface_a9a6ecd0c46781dfa736f3c9cced600e3}\label{classamle_1_1_am_l_e_interface_a9a6ecd0c46781dfa736f3c9cced600e3}} 
+\index{amle::AmLEInterface@{amle::AmLEInterface}!lives@{lives}}
+\index{lives@{lives}!amle::AmLEInterface@{amle::AmLEInterface}}
+\doxysubsubsection{\texorpdfstring{lives()}{lives()}}
+{\footnotesize\ttfamily int amle\+::\+Am\+L\+E\+Interface\+::lives (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classamle_1_1_am_l_e_interface_a8114ecc7fc3cd5f258c73aa0a6171f73}\label{classamle_1_1_am_l_e_interface_a8114ecc7fc3cd5f258c73aa0a6171f73}} 
+\index{amle::AmLEInterface@{amle::AmLEInterface}!loadState@{loadState}}
+\index{loadState@{loadState}!amle::AmLEInterface@{amle::AmLEInterface}}
+\doxysubsubsection{\texorpdfstring{loadState()}{loadState()}}
+{\footnotesize\ttfamily void amle\+::\+Am\+L\+E\+Interface\+::load\+State (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classamle_1_1_am_l_e_interface_ac292296bfdb0c7a0b10f87d560c1d1b5}\label{classamle_1_1_am_l_e_interface_ac292296bfdb0c7a0b10f87d560c1d1b5}} 
+\index{amle::AmLEInterface@{amle::AmLEInterface}!reset\_game@{reset\_game}}
+\index{reset\_game@{reset\_game}!amle::AmLEInterface@{amle::AmLEInterface}}
+\doxysubsubsection{\texorpdfstring{reset\_game()}{reset\_game()}}
+{\footnotesize\ttfamily void amle\+::\+Am\+L\+E\+Interface\+::reset\+\_\+game (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classamle_1_1_am_l_e_interface_a74c59137a6cc9b6873d97f09077f6f96}\label{classamle_1_1_am_l_e_interface_a74c59137a6cc9b6873d97f09077f6f96}} 
+\index{amle::AmLEInterface@{amle::AmLEInterface}!saveScreenPNG@{saveScreenPNG}}
+\index{saveScreenPNG@{saveScreenPNG}!amle::AmLEInterface@{amle::AmLEInterface}}
+\doxysubsubsection{\texorpdfstring{saveScreenPNG()}{saveScreenPNG()}}
+{\footnotesize\ttfamily void amle\+::\+Am\+L\+E\+Interface\+::save\+Screen\+P\+NG (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classamle_1_1_am_l_e_interface_a339d940a54784ec7bf9abbd63d61dab6}\label{classamle_1_1_am_l_e_interface_a339d940a54784ec7bf9abbd63d61dab6}} 
+\index{amle::AmLEInterface@{amle::AmLEInterface}!saveState@{saveState}}
+\index{saveState@{saveState}!amle::AmLEInterface@{amle::AmLEInterface}}
+\doxysubsubsection{\texorpdfstring{saveState()}{saveState()}}
+{\footnotesize\ttfamily void amle\+::\+Am\+L\+E\+Interface\+::save\+State (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classamle_1_1_am_l_e_interface_a3d0cfa618dae78211c1f3ad55984c452}\label{classamle_1_1_am_l_e_interface_a3d0cfa618dae78211c1f3ad55984c452}} 
+\index{amle::AmLEInterface@{amle::AmLEInterface}!setBool@{setBool}}
+\index{setBool@{setBool}!amle::AmLEInterface@{amle::AmLEInterface}}
+\doxysubsubsection{\texorpdfstring{setBool()}{setBool()}}
+{\footnotesize\ttfamily void amle\+::\+Am\+L\+E\+Interface\+::set\+Bool (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{key,  }\item[{const bool}]{value }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classamle_1_1_am_l_e_interface_aa278114c802b828c6d29d41fe8dca135}\label{classamle_1_1_am_l_e_interface_aa278114c802b828c6d29d41fe8dca135}} 
+\index{amle::AmLEInterface@{amle::AmLEInterface}!setFloat@{setFloat}}
+\index{setFloat@{setFloat}!amle::AmLEInterface@{amle::AmLEInterface}}
+\doxysubsubsection{\texorpdfstring{setFloat()}{setFloat()}}
+{\footnotesize\ttfamily void amle\+::\+Am\+L\+E\+Interface\+::set\+Float (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{key,  }\item[{const float}]{value }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classamle_1_1_am_l_e_interface_a611b612652d40baa667d9a608631d617}\label{classamle_1_1_am_l_e_interface_a611b612652d40baa667d9a608631d617}} 
+\index{amle::AmLEInterface@{amle::AmLEInterface}!setInt@{setInt}}
+\index{setInt@{setInt}!amle::AmLEInterface@{amle::AmLEInterface}}
+\doxysubsubsection{\texorpdfstring{setInt()}{setInt()}}
+{\footnotesize\ttfamily void amle\+::\+Am\+L\+E\+Interface\+::set\+Int (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{key,  }\item[{const int}]{value }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classamle_1_1_am_l_e_interface_a14573d9bc05f340cd6346a8d06cee1aa}\label{classamle_1_1_am_l_e_interface_a14573d9bc05f340cd6346a8d06cee1aa}} 
+\index{amle::AmLEInterface@{amle::AmLEInterface}!setString@{setString}}
+\index{setString@{setString}!amle::AmLEInterface@{amle::AmLEInterface}}
+\doxysubsubsection{\texorpdfstring{setString()}{setString()}}
+{\footnotesize\ttfamily void amle\+::\+Am\+L\+E\+Interface\+::set\+String (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{key,  }\item[{const std\+::string \&}]{value }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classamle_1_1_am_l_e_interface_a1c6a840895e4d5488baee5940d3aaa13}\label{classamle_1_1_am_l_e_interface_a1c6a840895e4d5488baee5940d3aaa13}} 
+\index{amle::AmLEInterface@{amle::AmLEInterface}!max\_num\_frames@{max\_num\_frames}}
+\index{max\_num\_frames@{max\_num\_frames}!amle::AmLEInterface@{amle::AmLEInterface}}
+\doxysubsubsection{\texorpdfstring{max\_num\_frames}{max\_num\_frames}}
+{\footnotesize\ttfamily int amle\+::\+Am\+L\+E\+Interface\+::max\+\_\+num\+\_\+frames}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+amle/\mbox{\hyperlink{amle__interface_8h}{amle\+\_\+interface.\+h}}\end{DoxyCompactItemize}

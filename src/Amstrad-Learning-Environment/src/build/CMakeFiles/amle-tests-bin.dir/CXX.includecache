@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/exyos/Travail/M1/PDP/amstradcpc-pdp/src/Amstrad-Learning-Environment/src/test/TestInputReader.h
+cppunit/extensions/HelperMacros.h
+-
+
+/home/exyos/Travail/M1/PDP/amstradcpc-pdp/src/Amstrad-Learning-Environment/src/test/mainTest.cpp
+cppunit/CompilerOutputter.h
+-
+cppunit/extensions/TestFactoryRegistry.h
+-
+cppunit/ui/text/TestRunner.h
+-
+TestInputReader.h
+/home/exyos/Travail/M1/PDP/amstradcpc-pdp/src/Amstrad-Learning-Environment/src/test/TestInputReader.h
+
