@@ -1,4 +1,4 @@
-# Amstrad-Learning-Environment
+# Amstrad Learning Environment
 ![openai](https://github.com/wilfriedaugeard/Amstrad-Learning-Environment/blob/master/assets/openai.png)
 <p align="center">
   <img alt="Version : 1.0.0" src="https://img.shields.io/badge/version-1.0.0-green" target="_blank" />
@@ -13,37 +13,50 @@ Subject proposed by the [University of Bordeaux](https://u-bordeaux.fr).
 Add an Amstrad CPC emulator to the OpenAI Gym library to allow it to do reinforcement learning on games developed on this platform.
 
 
-## Installation
-### Clone
-Clone this repository to your local machine 
-
-```sh
-git clone https://github.com/wilfriedaugeard/Amstrad-Learning-Environment/
-```
-
-### Dependences
-Install SDL and Cmake
-```sh
-sudo apt-get install libsdl1.2-dev libsdl-gfx1.2-dev libsdl-image1.2-dev cmake
-```
-Install CppUnit to tests
-```sh
-sudo apt-get install libcppunit-dev
-```
-Install gym
-```sh
-pip3 install gym
-```
 
 ## Structure of the project
+
 ```sh
   src/
     Amstrad-Learning-Environment/
     OpenAIGymEnvs/
 ```
 
-## Contribute
-### Authors
+The *Amstrad-Learning-Environment* folder contains the C++ interface  and a wrapper in order to use the interface in python. 
+
+ The *OpenAIGymEnvs* folder contains the gym environment using Amle (Amstrad Learning Environment).
+
+
+
+
+## Installation
+### Clone
+Clone this repository to your local machine if you want to access the code.
+
+```sh
+git clone https://github.com/wilfriedaugeard/Amstrad-Learning-Environment/
+```
+
+### Install packages
+
+Use pip/pip3 to install the different packages of the project. 
+
+```sh
+# Install Amstrad Learning Environment interface
+pip install amle-py
+```
+
+```sh
+# Install Gym environment
+pip install gym-cap32
+```
+
+For details: [AMLE](https://github.com/wilfriedaugeard/Amstrad-Learning-Environment/blob/master/src/Amstrad-Learning-Environment/src/README.md)
+
+
+
+## Authors
+
 👤 **Wilfried Augeard**
 - Github: [@Exyos](https://github.com/wilfriedaugeard)
 - Website: [waugeard.com](https://waugeard.com)
