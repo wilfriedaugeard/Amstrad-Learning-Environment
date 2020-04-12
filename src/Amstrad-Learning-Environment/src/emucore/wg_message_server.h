@@ -29,7 +29,7 @@
 #include "wg_message.h"
 #include <deque>
 #include <map>
-#include "SDL.h"
+#include "SDL/SDL.h"
 #include "SDL_thread.h"
 
 

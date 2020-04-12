@@ -1,0 +1,7 @@
+wGui Application Log (version v4.5.0)
+Severity Levels : [1] Critical, [3] Error, [5] Warning, [8] Info
+Sun Mar 29 18:34:57 2020 [ 8 ] : wGui Application starting
+Sun Mar 29 18:34:57 2020 [ 8 ] : CFontEngine - Loaded new font : 8 point, /home/exyos/Travail/M1/PDP/amstradcpc-pdp/src/Amstrad-Learning-Environment/src/resources/vera_sans.ttf
+Sun Mar 29 18:34:57 2020 [ 8 ] : Created new CView 
+Sun Mar 29 18:34:57 2020 [ 8 ] : wGui Application entering Exec loop
+Sun Mar 29 18:35:04 2020 [ 8 ] : wGui Application closing

@@ -1,5 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/amle-tests-bin.dir/test/mainTest.cpp.o"
+  "CMakeFiles/amle-tests-bin.dir/test/TestAmle.cpp.o"
   "../amle-tests.pdb"
   "../amle-tests"
 )

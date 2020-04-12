@@ -3,7 +3,7 @@
 #include <getopt.h>
 #include <iostream>
 #include <fstream>
-#include "SDL.h"
+#include "SDL/SDL.h"
 #include "cap32Dup.h"
 #include "keyboard.h"
 #include "stringutils.h"

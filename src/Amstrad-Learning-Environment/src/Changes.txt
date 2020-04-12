@@ -1,0 +1,4 @@
+Amstrad Learning Environment version 1.0.
+
+- Added a wrapper between C and Python so the library can be used in Python.
+- Created a shallow interface of Caprice32 allowing users to interact with the emulator.

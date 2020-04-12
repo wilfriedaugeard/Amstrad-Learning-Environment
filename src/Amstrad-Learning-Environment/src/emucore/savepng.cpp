@@ -6,7 +6,7 @@
  * Code was copied and slightly adapted from driedfruit savepng.
  * See https://github.com/driedfruit/SDL_SavePNG
  */
-#include <SDL.h>
+#include <SDL/SDL.h>
 #include <png.h>
 #include <cstdint>
 #include <string>

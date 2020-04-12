@@ -2,7 +2,7 @@
 #define _KEYBOARD_H_
 
 #include "types.h"
-#include "SDL.h"
+#include "SDL/SDL.h"
 #include <map>
 #include <list>
 #include "cap32Dup.h"

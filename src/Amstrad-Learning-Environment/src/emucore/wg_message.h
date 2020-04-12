@@ -27,7 +27,7 @@
 
 #include "wg_point.h"
 #include "wg_rect.h"
-#include "SDL.h"
+#include "SDL/SDL.h"
 #include <string>
 
 

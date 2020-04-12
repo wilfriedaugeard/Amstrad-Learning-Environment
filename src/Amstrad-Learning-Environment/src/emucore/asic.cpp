@@ -1,7 +1,7 @@
 #include "asic.h"
 #include "log.h"
 #include "cap32Dup.h"
-#include "SDL.h"
+#include "SDL/SDL.h"
 #include "crtc.h"
 
 byte *pbRegisterPage;

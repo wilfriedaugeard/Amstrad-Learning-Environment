@@ -1,0 +1,7 @@
+/*! \mainpage Amstrad Learning Environement
+ *
+ * \section intro_sec Introduction
+ *
+ * This documentation is related to the developpment of an interface that allows
+ * OpenAI to get a new environment that supports Amstrad CPC games.
+ */

@@ -37,7 +37,6 @@
 
 #include "types.h"
 #include "keyboard.h"
-#include "InputReader.h"
 
 #include "amle_interface.h"
 
@@ -45,6 +44,8 @@
 #include <thread>
 #include <stdlib.h>     /* srand, rand */
 #include <time.h>       /* time */
+#include <unistd.h>
+
 
 /**
 //Use to call a function without arguments in a thread
@@ -86,22 +87,26 @@ std::vector<SDL_Event> getPossibleEvents() {
     return possibleEvents;
 }
 
-void normalRun(int argc, char ** argv) {
-    AmLEInterface amle(argc, argv);
+void normalRun() {
+    AmLEInterface amle;
     while(true) {
         amle.step();
     }
 }
 
-void testRun(int argc, char ** argv) {
+void testRun() {
     srand(time(0));
-    AmLEInterface amle(argc, argv);
+    AmLEInterface amle;
+    amle.toggleSound(false);
+
+    amle.setEmulatorSpeed(MAX_SPEED_SETTING);
+    amle.setEmulatorSpeed(DEF_SPEED_SETTING);
 
     while(getElapsedTimeLastInput() <= 2000)
         amle.step();
 
-    // amle.loadROM(SupportedGames::Buggy, "buggy.dsk");
-    amle.loadSnapshot(SupportedGames::Buggy, "buggy.sna");
+    // amle.loadROM(SupportedGames::Arkanoid, "disk/arka.dsk");
+    amle.loadSnapshot(SupportedGames::Arkanoid, "snap/arka.sna");
 
     std::vector<SDL_Event> possibleEvents = amle.getLegalActions();
 
@@ -111,7 +116,7 @@ void testRun(int argc, char ** argv) {
     // CPCScreen pixels = getScreen();
 
     while(true) {
-        if(getElapsedTimeLastInput() >= 2 * dwTicksOffset) {
+        if(getElapsedTimeLastInput() >= (int)(2 * dwTicksOffset)) {
             SDL_Event event = getRandomEvent(possibleEvents);
             amle.act(&event);
             inputTimer = std::chrono::system_clock::now();
@@ -126,8 +131,8 @@ void testRun(int argc, char ** argv) {
     }
 }
 
-int main(int argc, char ** argv)
-{   
-    testRun(argc, argv);
+int main()
+{
+    testRun();
     return EXIT_SUCCESS;
 }

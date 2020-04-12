@@ -27,7 +27,7 @@
 
 #include "wg_point.h"
 #include "std_ex.h"
-#include "SDL.h"
+#include "SDL/SDL.h"
 #include <stdlib.h>
 #include <math.h>
 

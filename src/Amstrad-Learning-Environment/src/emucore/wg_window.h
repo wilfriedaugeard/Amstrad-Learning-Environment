@@ -31,7 +31,7 @@
 #include <string>
 #include <list>
 #include <typeinfo>
-#include "SDL.h"
+#include "SDL/SDL.h"
 
 
 namespace wGui

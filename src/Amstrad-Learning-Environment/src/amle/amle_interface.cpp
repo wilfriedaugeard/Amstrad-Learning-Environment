@@ -34,6 +34,7 @@
 
 #include "amle_interface.h"
 
+// Copied from cap32.cpp
 enum ApplicationWindowState
 {
    Minimized,              // application window has been iconified
@@ -42,10 +43,12 @@ enum ApplicationWindowState
    LostFocus               // application window lost input focus
 } _appWindowState;
 
-AmLEInterface::AmLEInterface(int argc, char ** argv) {
+AmLEInterface::AmLEInterface(const char * path) {
+    // Copied from cap32.cpp --------------------------------------------------------------------
     take_screenshot = false;
+    pathToData = std::string(path);
 
-    parseArguments(argc, argv, slot_list, args);
+    // parseArguments(argc, argv, slot_list, args);
 
     if (SDL_Init(SDL_INIT_AUDIO | SDL_INIT_TIMER | SDL_INIT_NOPARACHUTE) < 0) { // initialize SDL
         fprintf(stderr, "SDL_Init() failed: %s\n", SDL_GetError());
@@ -76,7 +79,7 @@ AmLEInterface::AmLEInterface(int argc, char ** argv) {
     }
 
     if (audio_init()) {
-        fprintf(stderr, "audio_init() failed. Disabling sound.\n");
+        //fprintf(stderr, "audio_init() failed. Disabling sound.\n");
         // TODO(cpitrat): Do not set this to 0 when audio_init fail as this affect
         // configuration when saving from GUI. Rather use some other indicator to
         // know whether snd_bufferptr is usable or not.
@@ -85,7 +88,8 @@ AmLEInterface::AmLEInterface(int argc, char ** argv) {
     }
 
     if (joysticks_init()) {
-        fprintf(stderr, "joysticks_init() failed. Joysticks won't work.\n");
+        std::cerr << "joysticks_init() failed. Joysticks won't work." << std::endl;
+        // fprintf(stderr, "joysticks_init() failed. Joysticks won't work.\n");
     }
 
     #ifdef DEBUG
@@ -100,6 +104,12 @@ AmLEInterface::AmLEInterface(int argc, char ** argv) {
 
     // emulator_init must be called before loading files as they require
     // pbGPBuffer to be initialized.
+
+    if(pathToData.compare(NO_PATH) != 0) {
+        CPC.rom_path = pathToData + "/rom/";
+        CPC.resources_path = pathToData + "/resources/";
+    }
+
     if (emulator_init()) {
         fprintf(stderr, "emulator_init() failed. Aborting.\n");
         cleanExit(-1);
@@ -121,22 +131,19 @@ AmLEInterface::AmLEInterface(int argc, char ** argv) {
     iExitCondition = EC_FRAME_COMPLETE;
     bolDone = false;
 
+    // END Copied from cap32.cpp ----------------------------------------------------------------
+
     previousScore = 0;
     numberFrame = 0;
+
+    pathtoCurrentGame = NO_PATH;
 }
 
 AmLEInterface::~AmLEInterface() {
-
+    emulator_reset(false);
 }
 
-/*
-void AmLEInterface::loadROM(const char * path) {
-    file_load(path, DSK_A);
-    virtualKeyboardEvents = CPC.InputMapper->StringToEvents(" run\"arkanoid\n");
-}
-*/
-
-void fillLegalActions() {
+void AmLEInterface::fillLegalActions() {
     std::vector<char> tmp = currentGame.getLegalActionsAsChars();
 
     for(unsigned int i = 0; i < tmp.size(); i++) {
@@ -149,18 +156,22 @@ void fillLegalActions() {
     }
 }
 
-void loadGameData(SupportedGames game) {
-    currentGame = getGameFromEnum(game);
-    std::string runcmd(" run\"");
-    runcmd += currentGame.getName();
-    runcmd += "\n";
-    virtualKeyboardEvents = CPC.InputMapper->StringToEvents(runcmd.c_str());
+void AmLEInterface::loadGameData(SupportedGames game, std::string pathToData) {
+    currentGame = getGameFromEnum(game, pathToData);
     fillLegalActions();
 }
 
 void AmLEInterface::loadROM(SupportedGames game, const char * path) {
     file_load(path, DSK_A);
-    loadGameData(game);
+    loadGameData(game, pathToData);
+
+    std::string runcmd(" run\"");
+    runcmd += currentGame.getName();
+    runcmd += "\n";
+    virtualKeyboardEvents = CPC.InputMapper->StringToEvents(runcmd.c_str());
+
+    this->currentSupportedGame = game;
+    this->pathtoCurrentGame = path;
 }
 
 int AmLEInterface::act(SDL_Event *event) {
@@ -173,15 +184,25 @@ int AmLEInterface::act(SDL_Event *event) {
 
 void AmLEInterface::loadSnapshot(SupportedGames game, const char * path) {
     snapshot_load(path);
-    loadGameData(game);
+    loadGameData(game, pathToData);
+    this->currentSupportedGame = game;
+    this->pathtoCurrentGame = path;
 }
 
 void AmLEInterface::saveSnapshot(const char * path) {
     snapshot_save(path);
 }
 
-void AmLEInterface::reset_game() {
-    emulator_reset(false);
+void AmLEInterface::resetGame() {
+    // If no game has been previously loaded, the emulator fully restarts, otherwise the file 
+    // previously loaded is reloaded
+    if(this->pathtoCurrentGame == NO_PATH) {
+        emulator_reset(false);
+    }
+    else {
+        snapshot_load(this->pathtoCurrentGame);
+        loadGameData(this->currentSupportedGame, pathToData);
+    }
 }
 
 int AmLEInterface::getNbLives() {
@@ -209,7 +230,31 @@ CPCScreen AmLEInterface::getRGBScreen() {
     return getScreen();
 }
 
+void AmLEInterface::setEmulatorSpeed(int speed) {
+    if(speed > DEF_SPEED_SETTING && speed <= MAX_SPEED_SETTING) {
+        CPC.speed = speed;
+        update_cpc_speed();
+    }
+    else {
+        CPC.speed = DEF_SPEED_SETTING;
+        update_cpc_speed();
+    }
+}
+
+bool AmLEInterface::pokeMemory(unsigned int addr, int value) {
+    if(addr < 65536 && value >= -128 && value <= 255) {
+        pbRAM[addr] = value;
+        return true;
+    }
+    return false;
+}
+
+void AmLEInterface::toggleSound(bool value) {
+    CPC.snd_enabled = (unsigned int)value;
+}
+
 void AmLEInterface::step() {
+    // 100% copied from cap32.cpp 
     this->numberFrame++;
     if(!virtualKeyboardEvents.empty()
         && (nextVirtualEventFrameCount < dwFrameCountOverall)
@@ -481,7 +526,7 @@ void AmLEInterface::step() {
             dwTicks = SDL_GetTicks();
             if (dwTicks < dwTicksTarget) { // limit speed ?
                 if (dwTicksTarget - dwTicks > POLL_INTERVAL_MS) { // No need to burn cycles if next event is far away
-                    std::this_thread::sleep_for(std::chrono::milliseconds(POLL_INTERVAL_MS));
+                    // std::this_thread::sleep_for(std::chrono::milliseconds(POLL_INTERVAL_MS));
                 }
                 return; // delay emulation
             }
@@ -540,6 +585,6 @@ void AmLEInterface::step() {
         }
     }
     else { // We are paused. No need to burn CPU cycles
-        std::this_thread::sleep_for(std::chrono::milliseconds(POLL_INTERVAL_MS));
+        // std::this_thread::sleep_for(std::chrono::milliseconds(POLL_INTERVAL_MS));
     }
 }

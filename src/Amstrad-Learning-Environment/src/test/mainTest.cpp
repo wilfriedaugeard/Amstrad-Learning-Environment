@@ -1,21 +1,24 @@
-#include <cppunit/CompilerOutputter.h>
 #include <cppunit/extensions/TestFactoryRegistry.h>
 #include <cppunit/ui/text/TestRunner.h>
-#include "TestInputReader.h"
+#include <cppunit/CompilerOutputter.h>
+
 
 int main(int argc, char* argv[]) {
-    // Get the top level suite from the registry
-    CppUnit::Test *suite = TestInputReader::getSuite();
-    
+
+    std::cout << "================================" << std::endl;
+    std::cout << "         TEST CPPUNIT" << std::endl;
+    std::cout << "================================\n" << std::endl;
+
     // Adds the test to the list of test to run
     CppUnit::TextUi::TestRunner runner;
-    runner.addTest(suite);
+    CppUnit::TestFactoryRegistry &registry = CppUnit::TestFactoryRegistry::getRegistry();
+    runner.addTest(registry.makeTest());
 
     // Change the default outputter to a compiler error format outputter
     runner.setOutputter(new CppUnit::CompilerOutputter(&runner.result(), std::cerr));
     // Run the tests.
-    bool wasSucessful = runner.run();
+    runner.run();
 
     // Return error code 1 if the one of test failed.
-    return wasSucessful ? 0 : 1;
+    return 0;
 }

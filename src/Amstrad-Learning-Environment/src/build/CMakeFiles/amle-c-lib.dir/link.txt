@@ -1,0 +1,1 @@
+/usr/bin/c++ -fPIC   -std=c++11 -fPIC -g -fomit-frame-pointer -D__STDC_CONSTANT_MACROS -Wall -Wunused  -shared -Wl,-soname,libamle_c.so -o ../amle_py/libamle_c.so CMakeFiles/amle-c-lib.dir/amle_py/amle_c_wrapper.cpp.o CMakeFiles/amle-c-lib.dir/amle/amle_interface.cpp.o liblibamle.a -Wl,-Bstatic -lSDLmain -Wl,-Bdynamic -lSDL -lpthread -lpng -lz -lfreetype 

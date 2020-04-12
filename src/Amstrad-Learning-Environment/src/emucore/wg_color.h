@@ -25,7 +25,7 @@
 #ifndef _WG_COLOR_H_
 #define _WG_COLOR_H_
 
-#include "SDL.h"
+#include "SDL/SDL.h"
 #include <cmath>
 #include <string>
 

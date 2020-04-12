@@ -1,6 +1,41 @@
+/* *****************************************************************************
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License version 2
+ * as published by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+ * *****************************************************************************
+ * A.M.L.E (Amstrad Learning Environment)
+ * Copyright (c) 2020 by Kévin Durou, Johann Kadionik, Vincent Ameeuw, Wilfried 
+ * Augeard and Theo De Castro Pinto.
+ * Released under the GNU General Public License; see License.txt for details.
+ * 
+ * A.L.E (Arcade Learning Environment)
+ * Copyright (c) 2009-2013 by Yavar Naddaf, Joel Veness, Marc G. Bellemare and
+ *   the Reinforcement Learning and Artificial Intelligence Laboratory
+ * Released under the GNU General Public License; see License.txt for details.
+ *
+ * Based on: Caprice32  --  "An Amstrad CPC Emulator"
+ * (c) Copyright 1997-2015 Ulrich Doewich
+ * (c) Copyright 2016-2019 Colin Pitrat
+ *
+ * *****************************************************************************
+ *  SupportedGamesUtils.cpp
+ *
+ *  The shared library interface.
+ **************************************************************************** */
+
 #include "SupportedGamesUtils.h"
 
 char stringToChar(std::string action) {
+    // Special characters handling
     if(action.compare(ACTION_RETURN) == 0) {
         return '\n';
     }
@@ -12,10 +47,13 @@ char stringToChar(std::string action) {
     if(action.compare(ACTION_BACKSLASH) == 0) {
         return '\\';
     }
+
+    // Otherwise, return the read character
     return action.at(0);
 }
 
 AddressRange getAddressRangeFromString(std::string * value) {
+    // Extract the two components of the address range of the given line
     int index = value->find(SEPARATOR);
 
     AddressRange range;
@@ -48,6 +86,8 @@ void readKeyValue(GameInfo * game, std::string line, std::string key) {
     int end = line.size();
     std::string value = line.substr(start, end);
 
+    // A switch butmore readable as a list of ifs that interpret the keys
+    // For more info, read the .h possible keys description
     if(key.compare(NAME_KEY) == 0) {
         game->setName(std::string(value));
     }
@@ -103,9 +143,12 @@ void readKeyValue(GameInfo * game, std::string line, std::string key) {
     }
 }
 
-void getGameFromFile(GameInfo * game, const char * gamePath) {
+void getGameFromFile(GameInfo * game, std::string gamePath) {
     std::string line;
 
+    // The list of key put into an array to improve code readability
+    // This function is almost never called, therefore constructing it here 
+    // is not a big deal
     std::vector<std::string> keys;
     keys.push_back(NAME_KEY);
     keys.push_back(LIVES_KEY);
@@ -119,9 +162,15 @@ void getGameFromFile(GameInfo * game, const char * gamePath) {
 
     std::ifstream file (gamePath);
 
+    // Read the .data file line by line
+    // One line should correspond to one key and its corresponding values
     if (file.is_open()) {
         while (getline(file, line)) {
+
+            // Looks for keys in the line
             for(unsigned int i = 0; i < keys.size(); i++) {
+
+                // If a key is found, interpret the line
                 if(line.substr(0, keys[i].size()).compare(keys[i]) == 0) {
                     readKeyValue(game, line, keys[i]);
                 }
@@ -131,15 +180,17 @@ void getGameFromFile(GameInfo * game, const char * gamePath) {
     }
 }
 
-GameInfo getGameFromEnum(SupportedGames game) {
+GameInfo getGameFromEnum(SupportedGames game, std::string pathToData) {
     GameInfo gameInfo;
 
+    // Switch to read the correct .data file.
+    // (not a switch though because it is more readable this way and performance is not an issue here)
     if(game == SupportedGames::Arkanoid) {
-        getGameFromFile(&gameInfo, ARKANOID_PATH);
+        getGameFromFile(&gameInfo, pathToData + ARKANOID_DATA_PATH);
     }
 
     if(game == SupportedGames::Buggy) {
-        getGameFromFile(&gameInfo, BUGGY_PATH);
+        getGameFromFile(&gameInfo, pathToData + BUGGY_DATA_PATH);
     }
     
     return gameInfo;
