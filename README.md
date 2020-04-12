@@ -2,10 +2,11 @@
 ![openai](https://github.com/wilfriedaugeard/Amstrad-Learning-Environment/blob/master/assets/openai.png)
 <p align="center">
   <img alt="Version : 1.0.0" src="https://img.shields.io/badge/version-1.0.0-green" target="_blank" />
-  <a href="">
-    <img alt="License: Apache" src="https://img.shields.io/badge/license-Apache-yellow.svg" target="_blank" />
+  <a href="https://github.com/wilfriedaugeard/Amstrad-Learning-Environment/blob/master/src/Amstrad-Learning-Environment/src/License.txt">
+    <img alt="License: GNU" src="https://img.shields.io/badge/license-GNU-yellow.svg" target="_blank" />
   </a>
 </p>
+
 Subject proposed by the [University of Bordeaux](https://u-bordeaux.fr).
 
 
@@ -61,14 +62,9 @@ For details: [AMLE](https://github.com/wilfriedaugeard/Amstrad-Learning-Environm
 - Github: [@Exyos](https://github.com/wilfriedaugeard)
 - Website: [waugeard.com](https://waugeard.com)
 
-👤 **Johann Kadionik**
-
-👤 **Kévin Durou**
-
 👤 **Theo De Castro Pinto**
-
-👤 **Vincent Ameeuw**
+- Github : [@Leopounet](https://github.com/Leopounet)
 
 ## License
 
-- [Apache license]()<br/>
+- [Gnu license](https://github.com/wilfriedaugeard/Amstrad-Learning-Environment/blob/master/src/Amstrad-Learning-Environment/src/License.txt)<br/>
